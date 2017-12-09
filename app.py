@@ -23,10 +23,6 @@ value_store = ValueStore()
 
 
 @app.route('/')
-def root():
-    return 'OK'
-
-
 @app.route('/health')
 def health():
     return 'OK'
