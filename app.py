@@ -2,6 +2,7 @@ import json
 
 from flask import Flask
 from flask import request
+from flask import abort
 
 
 app = Flask(__name__)
@@ -45,7 +46,8 @@ def set():
 @app.route('/get')
 def get():
     keys = request.args.get('keys')
-    # raise 404 for missing keys arg
+    if not keys:
+        abort(404, 'keys is a required param')
     key_arr = keys.split(',')
     response = {}
     for key in key_arr:
