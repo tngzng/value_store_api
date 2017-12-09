@@ -47,7 +47,7 @@ the number of key value pairs added to storage
 Retrieve values for a list of keys
 
 ### parameters
-##### keys
+##### keys (required)
 Comma-separated list of keys
 
 ### example request
