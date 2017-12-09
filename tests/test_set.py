@@ -1,15 +1,10 @@
-import unittest
 import json
 
-from app import app
 from app import value_store
+from tests import base
 
 
-class TestSet(unittest.TestCase):
-    def setUp(self):
-        self.app = app
-        self.client = self.app.test_client()
-
+class TestSet(base.BaseAPITestCase):
     def test_set__no_parameters(self):
         res = self.client.get('/set')
         json_res = json.loads(res.data)
