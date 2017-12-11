@@ -6,17 +6,27 @@ from flask import abort
 
 
 app = Flask(__name__)
+DATA_STORE_FILEPATH = 'data_store/data_store.json'
 
 
 class ValueStore:
-    def __init__(self):
-        self._store = {}
-
     def set(self, key, val):
-        self._store[key] = val
+        with open(DATA_STORE_FILEPATH, 'r+') as data_store:
+            try:
+                loaded_data_store = json.load(data_store)
+            except ValueError:
+                loaded_data_store = {}
+            loaded_data_store[key] = val
+            data_store.seek(0)
+            json.dump(loaded_data_store, data_store)
 
     def get(self, key):
-        return self._store.get(key, None)
+        with open(DATA_STORE_FILEPATH, 'r') as data_store:
+            try:
+                loaded_data_store = json.load(data_store)
+            except ValueError:
+                loaded_data_store = {}
+            return loaded_data_store.get(key, None)
 
 
 value_store = ValueStore()
