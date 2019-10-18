@@ -6,12 +6,13 @@ Very special value store API for setting and retrieving key value pairs
 ## Setting up your local environment
 ```
 cd value_store_api
-virtualenv venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
 ## Running the API locally
 ```
+pip install --upgrade pip
 pip install -r requirements.txt
 export FLASK_DEBUG=1  # use debug mode for code auto-reloading
 python app.py
