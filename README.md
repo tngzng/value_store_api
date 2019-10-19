@@ -20,8 +20,13 @@ python app.py
 
 ## Running tests
 ```
-pip install -r requirements.txt
 ./scripts/test
+```
+
+## Deploying to Heroku
+```
+git push heroku master
+heroku open  # verify your deploy at the url opened
 ```
 
 # Interface
